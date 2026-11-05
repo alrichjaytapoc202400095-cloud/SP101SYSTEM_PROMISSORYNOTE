@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PN System Poster — St. Peter's College Iligan City</title>
+<link rel="icon" type="image/png" href="img/logo.png">
+<style>
+  :root {
+    --blue: #1d4ed8; --blue-2: #1e3a8a; --sky: #3b82f6;
+    --maroon: #991b1b; --maroon-2: #7f1d1d;
+    --ink: #0f172a; --muted: #475569; --line: #e2e8f0;
+    --green: #16a34a; --amber: #b45309;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #27303f; font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif; color: var(--ink); }
+  .scale-wrap { margin: 20px auto; width: 1123px; }
+  .poster {
+    width: 1123px; height: 1588px; /* A3 portrait @96dpi */
+    background: #fff; overflow: hidden; position: relative;
+    transform-origin: top left; padding: 44px 46px;
+    display: flex; flex-direction: column; gap: 22px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  /* ---------- header ---------- */
+  .p-head {
+    display: flex; align-items: center; gap: 26px;
+    background: linear-gradient(120deg, var(--blue-2), var(--blue) 55%, var(--sky));
+    color: #fff; border-radius: 22px; padding: 28px 30px;
+  }
+  .seal {
+    width: 168px; height: 168px; object-fit: contain; flex: none;
+    background: #fff; border-radius: 50%; padding: 6px;
+    box-shadow: 0 6px 22px rgba(0,0,0,.35);
+  }
+  .school { font-size: 22px; font-weight: 800; letter-spacing: 3px; }
+  .office { font-size: 12.5px; letter-spacing: 2.2px; opacity: .85; margin-top: 4px; }
+  .p-head h1 { font-size: 47px; font-weight: 900; letter-spacing: .5px; margin: 10px 0 8px; line-height: 1.04; }
+  .p-head h1 span { color: #fbbf24; }
+  .tagline { font-size: 16.5px; line-height: 1.45; opacity: .95; max-width: 780px; }
+
+  /* ---------- section titles ---------- */
+  h2.sec {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 21px; font-weight: 900; letter-spacing: 2.5px; color: var(--blue-2);
+  }
+  h2.sec::before { content: ''; width: 34px; height: 8px; border-radius: 99px; background: linear-gradient(90deg, var(--maroon), #dc2626); }
+  h2.sec small { font-weight: 600; letter-spacing: .2px; color: var(--muted); font-size: 12.5px; text-transform: none; margin-left: auto; }
+
+  /* ---------- flow ---------- */
+  .steps { list-style: none; display: flex; flex-direction: column; gap: 10px; position: relative; }
+  .steps li {
+    display: flex; align-items: center; gap: 16px;
+    border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 16px;
+    background: #f8fafc; position: relative;
+  }
+  .steps li::before {
+    content: ''; position: absolute; left: 33px; top: 100%; height: 10px; width: 2.5px;
+    background: #cbd5e1;
+  }
+  .steps li:last-child::before { display: none; }
+  .num {
+    width: 52px; height: 52px; border-radius: 50%; flex: none;
+    background: radial-gradient(circle at 30% 25%, #ef4444, var(--maroon-2));
+    color: #fff; font-size: 26px; font-weight: 900;
+    display: grid; place-items: center; box-shadow: 0 4px 12px rgba(153,27,27,.4);
+  }
+  .steps b { color: var(--blue-2); letter-spacing: .3px; }
+  .steps .st { font-size: 15.5px; line-height: 1.45; }
+  .chip {
+    display: inline-block; background: #dbeafe; color: var(--blue); border-radius: 99px;
+    padding: 2px 10px; font-size: 12.5px; font-weight: 700; margin-left: 6px; white-space: nowrap;
+  }
+  .chip.g { background: #dcfce7; color: #166534; }
+  .chip.a { background: #fef3c7; color: #92400e; }
+  .chip.r { background: #fee2e2; color: #b91c1c; }
+
+  /* ---------- roles ---------- */
+  .roles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .role {
+    border: 1.5px solid var(--line); border-radius: 16px; padding: 16px 18px; background: #fff;
+    box-shadow: 0 2px 8px rgba(15,23,42,.06);
+  }
+  .role .r-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .r-ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 23px; flex: none; }
+  .r1 .r-ico { background: #dbeafe; } .r2 .r-ico { background: #dcfce7; } .r3 .r-ico { background: #fef3c7; }
+  .r4 .r-ico { background: #ede9fe; }
+  .role h3 { font-size: 16.5px; }
+  .role .r-sub { font-size: 11px; letter-spacing: 1.4px; color: var(--muted); font-weight: 700; }
+  .role ul { list-style: none; font-size: 13.5px; color: #334155; line-height: 1.55; }
+  .role ul li { padding-left: 16px; position: relative; margin-top: 4px; }
+  .role ul li::before { content: '▸'; position: absolute; left: 0; color: var(--blue); }
+
+  /* ---------- bottom grid ---------- */
+  .grid2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; }
+  .panel { border: 1.5px solid var(--line); border-radius: 16px; padding: 16px 18px; background: #fff; }
+  .panel h3 { font-size: 15px; letter-spacing: 1.8px; color: var(--maroon-2); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .rules { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 7px 14px; font-size: 13.5px; color: #334155; }
+  .rules li { display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+  .rules li::before { content: '✔'; color: var(--green); font-weight: 900; flex: none; }
+  .rules li b { color: var(--ink); }
+
+  .ledger { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 13.5px; }
+  .ledger div { display: flex; justify-content: space-between; padding: 7px 12px; border-bottom: 1px solid #f1f5f9; }
+  .ledger div:last-child { border-bottom: 0; }
+  .ledger .lab { color: var(--muted); }
+  .ledger .val { font-weight: 800; }
+  .ledger .pn-row { background: #eff6ff; }
+  .ledger .pn-row .val { color: var(--blue); }
+  .ledger .done .val { color: var(--green); }
+  .mini-note { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+
+  /* ---------- fake notification ---------- */
+  .notif {
+    margin-top: 10px; border: 1px solid #bfdbfe; background: #eff6ff; border-left: 4px solid var(--blue);
+    border-radius: 10px; padding: 9px 12px;
+  }
+  .notif .n-t { font-size: 12.5px; font-weight: 800; color: var(--blue-2); }
+  .notif .n-m { font-size: 12px; color: #334155; margin-top: 2px; }
+
+  /* ---------- footer ---------- */
+  .p-foot {
+    margin-top: auto; display: flex; align-items: center; gap: 18px;
+    background: linear-gradient(120deg, var(--blue-2), var(--blue));
+    color: #fff; border-radius: 18px; padding: 18px 24px;
+  }
+  .f-seal { width: 74px; height: 74px; object-fit: contain; background: #fff; border-radius: 50%; padding: 3px; flex: none; box-shadow: 0 3px 12px rgba(0,0,0,.3); }
+  .p-foot .f-title { font-size: 17px; font-weight: 800; letter-spacing: 1px; }
+  .p-foot .f-sub { font-size: 12.5px; opacity: .9; margin-top: 3px; line-height: 1.5; }
+  .f-acc { margin-left: auto; text-align: right; font-size: 12.5px; line-height: 1.7; opacity: .95; }
+  .f-acc code { background: rgba(255,255,255,.16); border-radius: 6px; padding: 1px 7px; font-family: inherit; font-weight: 700; }
+
+  /* ---------- print ---------- */
+  @page { size: A3 portrait; margin: 0; }
+  @media print {
+    body { background: #fff; }
+    .scale-wrap { margin: 0; width: auto !important; height: auto !important; }
+    .poster { transform: none !important; box-shadow: none; margin: 0; }
+    .no-print { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="scale-wrap" id="wrap">
+<div class="poster" id="poster">
+
+  <header class="p-head">
+    <img class="seal" src="img/logo.png" alt="St. Peter's College seal" onerror="this.style.display='none'">
+    <div>
+      <div class="school">ST. PETER'S COLLEGE ILIGAN CITY</div>
+      <div class="office">OFFICE OF THE REGISTRAR &nbsp;·&nbsp; STUDENT ACCOUNTS &amp; FINANCE</div>
+      <h1>PROMISSORY NOTE <span>SYSTEM</span></h1>
+      <div class="tagline">Can't pay the full tuition yet? Pay at least <b>75%</b>, file a <b>Promissory Note</b> for the remaining balance —
+        the <b>Registrar or Admin approves it</b>, you're <b>notified right away</b>, and you can <b>enroll &amp; enlist your subjects</b>.</div>
+    </div>
+  </header>
+
+  <section class="p-flow">
+    <h2 class="sec">HOW IT WORKS <small>the 75% rule, step by step</small></h2>
+    <ol class="steps">
+      <li><div class="num">1</div>
+        <div class="st"><b>PAY AT LEAST 75% OF TUITION</b> — the <b>Accounting / Cashier</b> records your payment with an Official Receipt
+          <span class="chip a">💵 recorded at the cashier</span> and your dashboard progress bar updates automatically.</div>
+      </li>
+      <li><div class="num">2</div>
+        <div class="st"><b>FILE YOUR PROMISSORY NOTE</b> — at 75% your dashboard turns <span class="chip g">PN ELIGIBLE</span> and the
+          <b>remaining balance is auto-computed</b> as your PN amount — add your reason, promise-to-pay date, e-signature,
+          and the <b>required ID photos</b> (school ID front &amp; back + guardian valid ID front &amp; back).</div>
+      </li>
+      <li><div class="num">3</div>
+        <div class="st"><b>REGISTRAR / ADMIN REVIEW</b> — the filing notifies the Registrar <span class="chip">🔔 new PN pending</span> who checks your
+          % paid, PN amount, reason and signature — then <b>Approves ✓</b> or <b>Rejects ✕</b> (with remarks; you may re-file).
+          The <b>Admin</b> may also approve or reject <b>any</b> filing.</div>
+      </li>
+      <li><div class="num">4</div>
+        <div class="st"><b>YOU GET NOTIFIED RIGHT AWAY</b> — <span class="chip g">✅ PN APPROVED!</span> lands in your notification bell
+          <em>dayon</em> — approval automatically <b>unlocks enrollment</b> and the printable PN document.</div>
+      </li>
+      <li><div class="num">5</div>
+        <div class="st"><b>ENROLL &amp; ENLIST SUBJECTS</b> — tick your subjects up to <span class="chip">max 24 units</span>, then
+          <span class="chip g">✓ Confirm Enrollment</span> — the Registrar receives your official enrollment summary. Fully-paid students skip the PN entirely.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2 class="sec">FOUR ROLES, ONE SYSTEM</h2>
+    <div class="roles">
+      <div class="role r1">
+        <div class="r-head"><div class="r-ico">🎓</div>
+          <div><h3>STUDENT</h3><div class="r-sub">SELF-SERVICE</div></div></div>
+        <ul>
+          <li>Tracks tuition progress &amp; balance</li>
+          <li>Files the PN when ≥ 75% paid</li>
+          <li>Receives approval notifications</li>
+          <li>Enlists subjects &amp; confirms enrollment</li>
+        </ul>
+      </div>
+      <div class="role r2">
+        <div class="r-head"><div class="r-ico">💵</div>
+          <div><h3>ACCOUNTING / CASHIER</h3><div class="r-sub">PAYMENTS</div></div></div>
+        <ul>
+          <li>Records payments &amp; prints official receipts</li>
+          <li>Live ledger of every student's % paid</li>
+          <li>Flags who is PN-eligible</li>
+          <li>Students auto-notified per payment</li>
+        </ul>
+      </div>
+      <div class="role r3">
+        <div class="r-head"><div class="r-ico">📋</div>
+          <div><h3>REGISTRAR</h3><div class="r-sub">APPROVAL</div></div></div>
+        <ul>
+          <li>Reviews pending Promissory Notes</li>
+          <li>Approves ✓ / rejects ✕ with remarks</li>
+          <li>Prints official receipts &amp; PN documents</li>
+          <li>Decisions unlock enrollment instantly</li>
+        </ul>
+      </div>
+      <div class="role r4">
+        <div class="r-head"><div class="r-ico">🛡</div>
+          <div><h3>ADMIN</h3><div class="r-sub">FULL POWER</div></div></div>
+        <ul>
+          <li>Approves or rejects any filing</li>
+          <li>Control dashboard — stats &amp; ledger</li>
+          <li>Records payments; prints PN &amp; receipts</li>
+          <li>Notification log &amp; demo data reset</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel">
+      <h3>🛡 KEY RULES BUILT INTO THE SYSTEM</h3>
+      <ul class="rules">
+        <li><span><b>75% minimum</b> payment before a PN can be filed.</span></li>
+        <li><span>Remaining balance is <b>auto-computed</b> (no manual math).</span></li>
+        <li><span>E-signature must <b>match your full legal name</b>.</span></li>
+        <li><span>Promise-to-pay date must be <b>in the future</b>.</span></li>
+        <li><span>Only <b>one pending PN</b> at a time, enrollment stays locked.</span></li>
+        <li><span>Rejected? <b>Re-file</b> a new PN with the remarks in mind.</span></li>
+        <li><span><b>Fully paid? No PN needed</b> — enroll directly.</span></li>
+        <li><span>Max subject load: <b>24 units</b> per semester.</span></li>
+      </ul>
+      <div class="notif">
+        <div class="n-t">✅ PN-2026-0001 — APPROVED!</div>
+        <div class="n-m">"The Registrar approved your Promissory Note for ₱6,000.00. You may now enroll and enlist your subjects."</div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>🧮 SAMPLE COMPUTATION</h3>
+      <div class="ledger">
+        <div><span class="lab">Tuition &amp; fees</span><span class="val">₱30,000.00</span></div>
+        <div><span class="lab">Already paid (80%) <span class="chip g">≥ 75% ✓</span></span><span class="val">₱24,000.00</span></div>
+        <div class="pn-row"><span class="lab">Promissory Note covers</span><span class="val">₱ 6,000.00</span></div>
+        <div class="done"><span class="lab">Promise to pay on or before</span><span class="val">Nov 30, 2026</span></div>
+      </div>
+      <div class="mini-note">The student can enrol now, while the PN secures the remaining ₱6,000 balance. An approved PN can be
+        <b>printed</b> as a formal document with the school seal, amounts, promise text and signature lines.</div>
+    </div>
+  </section>
+
+  <footer class="p-foot">
+    <img class="f-seal" src="img/logo.png" alt="" onerror="this.style.display='none'">
+    <div>
+      <div class="f-title">ST. PETER'S COLLEGE ILIGAN CITY</div>
+      <div class="f-sub">Promissory Note (PN) System · Office of the Registrar &amp; Accounting · SY 2026–2027, 1st Semester<br>
+        Data stays secure in the browser — no server or internet required.</div>
+    </div>
+    <div class="f-acc">
+      DEMO ACCOUNTS <code>admin</code> <code>student1</code> <code>accounting</code> <code>registrar</code><br>
+      password = username &nbsp;·&nbsp; PN questions? Registrar's Office
+    </div>
+  </footer>
+
+</div>
+</div>
+<div class="no-print" style="text-align:center;color:#94a3b8;font-size:12px;margin:10px 0 24px;">
+  Tip: press <b>Ctrl + P</b> → Save as PDF — page size is already A3 portrait.
+</div>
+<script>
+  (function () {
+    var wrap = document.getElementById('wrap'), poster = document.getElementById('poster');
+    function fit() {
+      var s = Math.min(1, (window.innerWidth - 40) / 1123, (window.innerHeight - 40) / 1588);
+      poster.style.transform = s < 1 ? 'scale(' + s + ')' : 'none';
+      wrap.style.width = (1123 * s) + 'px'; wrap.style.height = (1588 * s) + 'px';
+    }
+    fit(); window.addEventListener('resize', fit);
+  })();
+</script>
+</body>
+</html>
